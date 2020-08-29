@@ -5,13 +5,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Jeopardy {
-
-    private static Controller _controller;
     
     public Jeopardy() {
 
@@ -47,10 +46,26 @@ public class Jeopardy {
 
     public static List<Category> questions() {
 
-        
+        List<Category> output = new ArrayList<Category>();
 
+        File folder = new File("./temp/categories");
+        File[] allFiles = folder.listFiles();
+        for(File file : allFiles) {
+            Category category = new Category(file.getName());
+            try {
+                Scanner sc = new Scanner(file);
+                while(sc.hasNextLine()) {
+                    String[] data = sc.nextLine().split(",");
+                    Question question = new Question(Integer.parseInt(data[0]), data[1], data[2]);
+                    category.add(question);
+                }
+            } catch(Exception e) {
 
-        return null;
+            }
+            output.add(category);
+        }
+
+        return output;
     }
 
     

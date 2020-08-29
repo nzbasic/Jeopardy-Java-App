@@ -29,20 +29,7 @@ public class Controller {
     @FXML
     public void questions(ActionEvent event) throws IOException {
 
-        List<Categories> questions = Jeopardy.questions();
-
-        File folder = new File("./categories");
-            File[] allFiles = folder.listFiles();
-            String path = "./temp/categories/";
-            for(File file : allFiles) {
-                try {
-                    Files.copy(file.toPath(), (new File(path + file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                } catch(Exception e) {
-                    //
-                }
-            }
-
-
+        List<Category> questions = Jeopardy.questions();
 
 
         Label label = new Label("cum");
