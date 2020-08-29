@@ -17,6 +17,11 @@ public class Category {
         _questionList.add(question);
     }
 
-    
+    public String getName() {
+        return _name;
+    }
 
+    public List<Question> getQuestions() {
+        return _questionList;
+    }
 }

@@ -2,18 +2,18 @@ package jeopardy;
 
 public class Question {
     
-    private int _prize;
+    private String _prize;
     private String _question;
     private String _answer;
     private boolean _answered = false;
 
-    public Question(int prize, String question, String answer) {
+    public Question(String prize, String question, String answer) {
         _prize = prize;
         _question = question;
         _answer = answer;
     }
 
-    public int getPrize() {
+    public String getPrize() {
         return _prize;
     }
 
