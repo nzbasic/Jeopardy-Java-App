@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.File;
 import java.nio.file.Path;
+import java.util.List;
 
 import java.io.IOException;
 
@@ -27,6 +28,22 @@ public class Controller {
 
     @FXML
     public void questions(ActionEvent event) throws IOException {
+
+        List<Categories> questions = Jeopardy.questions();
+
+        File folder = new File("./categories");
+            File[] allFiles = folder.listFiles();
+            String path = "./temp/categories/";
+            for(File file : allFiles) {
+                try {
+                    Files.copy(file.toPath(), (new File(path + file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch(Exception e) {
+                    //
+                }
+            }
+
+
+
 
         Label label = new Label("cum");
         label.setTextAlignment(TextAlignment.CENTER);
@@ -48,6 +65,9 @@ public class Controller {
 
         window.setScene(scene2);
         window.show();
+
+        
+
 
     }
 

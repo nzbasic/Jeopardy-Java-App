@@ -5,8 +5,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Jeopardy {
+
+    private static Controller _controller;
     
     public Jeopardy() {
 
@@ -40,6 +45,13 @@ public class Jeopardy {
         }
     }
 
+    public static List<Category> questions() {
+
+        
+
+
+        return null;
+    }
 
     
     public void gameSetup() {
