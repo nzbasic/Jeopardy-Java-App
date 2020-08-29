@@ -3,6 +3,9 @@
     -fx-background-radius: 0;
     -fx-border-color: black;
     -fx-border-width: 3 3 3 3;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
 
     background-color: #0F4C75;
     border-color: black;
@@ -12,4 +15,5 @@
 .button:hover {
     -fx-background-color: teal;
     background-color: teal;
+    -fx-background-insets: 0;
 }
