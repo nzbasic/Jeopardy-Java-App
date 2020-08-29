@@ -19,9 +19,8 @@ import java.nio.file.Paths;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.List;
-
+import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import java.io.IOException;
 
@@ -51,8 +50,8 @@ public class Controller {
         grid.getChildren().addAll(canvas);
     }
 
-    private void addButtonText(String text, int i, int j, EventHandler<ActionEvent> onClick) {
-        Button button = new Button(text);
+    private void addButtonText(Question question, int i, int j) {
+        Button button = new Button(question.getPrize());
         button.setTextAlignment(TextAlignment.CENTER);
         button.setFont(new Font(25));
         button.setTextFill(Color.YELLOW);
@@ -60,7 +59,22 @@ public class Controller {
         button.setPrefSize(200,100);
         button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-        button.setOnAction(onClick);
+        button.setOnAction(e -> {
+    
+            FXMLLoader loader = new FXMLLoader();
+            String fxmlDocPath = "./QuestionScreen.fxml";
+            try {
+                FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
+                AnchorPane root = (AnchorPane) loader.load(fxmlStream);
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) button.getScene().getWindow();
+                stage.setScene(scene);
+            } catch(Exception exception) {
+                System.out.println("UR A FUCKING IDIOT");
+                exception.printStackTrace();
+            }
+            
+        });
 
         GridPane.setConstraints(button, i, j);
         grid.getChildren().addAll(button);
@@ -87,15 +101,7 @@ public class Controller {
             int j=1;
             for (Question question: questions) {
             
-                addButtonText(question.getPrize(), i, j, new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        try{ 
-                            pickQuestion(question, event);
-                        } catch(Exception e) {
-                        }
-                    }
-                });
+                addButtonText(question, i, j);
                 j++;
                 if (j == 6) {
                     break;
@@ -129,12 +135,12 @@ public class Controller {
 
         root.setStyle("-fx-background-color: #121212");
 
-        Scene scene2 = new Scene(root, 800, 600);
-        scene2.getStylesheets().add("./questions.css");
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add("./questions.css");
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-        window.setScene(scene2);
+        window.setScene(scene);
         window.show();
 
     }
@@ -149,10 +155,10 @@ public class Controller {
 
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);
 
-        Scene scene2 = new Scene(root);
+        Scene scene = new Scene(root);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
+        window.setScene(scene);
         window.show();
     }
 
@@ -163,21 +169,8 @@ public class Controller {
         game.gameSetup();
     }
 
-    @FXML
-    private void pickQuestion(Question question, ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-    
-        String fxmlDocPath = "./QuestionScreen.fxml";
-        FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
-
-        AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-
-        Scene scene2 = new Scene(root);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
-        window.show();
+    @FXML 
+    public void submitAnswer(ActionEvent event) throws IOException {
+        CharSequence chars = ((TextField)event.getSource()).getCharacters();
     }
-
-
 }

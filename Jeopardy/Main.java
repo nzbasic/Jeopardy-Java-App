@@ -25,8 +25,8 @@ public class Main extends Application
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-         
         Scene scene = new Scene(root);
+
         stage.setScene(scene);
         stage.setTitle("Jeopardy!");
         stage.show();
