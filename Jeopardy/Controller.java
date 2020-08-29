@@ -93,40 +93,29 @@ public class Controller {
                 addButtonText(question.getPrize(), i, j, new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+                        System.out.println(question.getPrize());
                     }
                 });
-
                 j++;
                 if (j == 6) {
                     break;
                 }
             }
-
             if (j < 5) {
                 for (int k=j; k<6; k++) {
-                    addButtonText("", i, k, new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                        }
-                    });
+                    addPaneText("", i, k);
                 }
             }
-
             i++;
             if (i == 6) {
                 break;
             }
         }
-
         if (i < 6) {
             for (int k=i; k<6; k++) {
                 addPaneText("", k, 0);
                 for (int l=1; l<6; l++) {
-                    addButtonText("", k, l, new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                        }
-                    });
+                    addPaneText("", k, l);
                 }
             }
         }
@@ -140,7 +129,7 @@ public class Controller {
 
         root.setStyle("-fx-background-color: #121212");
 
-        Scene scene2 = new Scene(root, 750, 400);
+        Scene scene2 = new Scene(root, 800, 600);
         scene2.getStylesheets().add("./questions.css");
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
