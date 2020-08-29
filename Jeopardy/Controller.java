@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 
@@ -21,36 +22,29 @@ public class Controller {
 
     private GridPane grid = new GridPane();
 
-    private void gridSetup() {
-        grid.gridLinesVisibleProperty();
-        grid.setPadding(new Insets(10,10,10,10));
-    }
-
     @FXML
     public void questions(ActionEvent event) throws IOException {
-        
-        FXMLLoader loader = new FXMLLoader();
-    
-        String fxmlDocPath = "./Questions.fxml";
-        FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
-        AnchorPane root = (AnchorPane) loader.load(fxmlStream);
+        Label label = new Label("cum");
+        label.setTextAlignment(TextAlignment.CENTER);
+        label.setFont(new Font(18));
+        label.setTextFill(Color.WHITE);
 
-        Scene scene2 = new Scene(root);
+        grid.gridLinesVisibleProperty();
+        grid.setPadding(new Insets(10,10,10,10));
+        GridPane.setConstraints(label, 0, 1);
+        grid.getChildren().addAll(label);
+        grid.setStyle("-fx-background-color: #0F4C75");
+
+        AnchorPane root = new AnchorPane(grid);
+        root.setStyle("-fx-background-color: #121212");
+
+        Scene scene2 = new Scene(root, 400, 400);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         window.setScene(scene2);
         window.show();
-
-        Text label = new Text("cum");
-        label.setTextAlignment(TextAlignment.CENTER);
-        label.setFont(new Font(18));
-        label.setFill(Color.WHITE);
-
-        gridSetup();
-        grid.add(label,0,0);
-
 
     }
 

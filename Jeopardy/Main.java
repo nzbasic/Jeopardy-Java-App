@@ -30,5 +30,7 @@ public class Main extends Application
         stage.setScene(scene);
         stage.setTitle("Jeopardy!");
         stage.show();
+
+        Jeopardy game = new Jeopardy();
     }
 }

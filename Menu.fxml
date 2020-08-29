@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="633.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.Controller">
    <children>
-      <Button defaultButton="true" layoutX="135.0" layoutY="202.0" mnemonicParsing="false" onAction="#questions" prefHeight="132.0" prefWidth="363.0" style="-fx-background-color: #1F1A24; -fx-border-color: #dacbcb;" text="Go To Questions" textFill="#dacbcb" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="135.0">
+      <Button defaultButton="true" layoutX="140.0" layoutY="321.0" mnemonicParsing="false" onAction="#questions" prefHeight="132.0" prefWidth="363.0" style="-fx-background-color: #1F1A24; -fx-border-color: #dacbcb;" text="Go To Questions" textFill="#dacbcb" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="130.0">
          <font>
             <Font size="36.0" />
          </font>
@@ -32,12 +32,12 @@
             <ColorAdjust brightness="0.74" />
          </effect>
       </ImageView>
-      <Text fill="#dacbcb" layoutX="211.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Winnings">
+      <Text fill="#dacbcb" layoutX="212.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Winnings">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <Text fill="#dacbcb" layoutX="310.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x">
+      <Text fill="#dacbcb" layoutX="309.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x">
          <font>
             <Font size="27.0" />
          </font>
