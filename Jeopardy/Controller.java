@@ -9,12 +9,15 @@ import javafx.scene.Node;
 import java.io.FileInputStream;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.File;
+import java.nio.file.Path;
 
 import java.io.IOException;
 
@@ -65,7 +68,11 @@ public class Controller {
         window.show();
     }
 
-    
+    @FXML 
+    public void reset(ActionEvent event) throws IOException {
+        Files.walk(Paths.get("./temp/")).map(Path::toFile).sorted((o1, o2) -> -o1.compareTo(o2)).forEach(File::delete);
+        Jeopardy game = new Jeopardy();
+    }
 
 
 }

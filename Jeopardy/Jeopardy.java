@@ -1,13 +1,10 @@
 package jeopardy;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+
+import java.io.FileWriter;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.nio.file.StandardCopyOption;
 
 public class Jeopardy {
     
@@ -21,51 +18,31 @@ public class Jeopardy {
             File categories = new File("./temp/categories");
             winnings.mkdir();
             categories.mkdir();
-            File money = new File("./temp/winnings/money.txt")
+            File money = new File("./temp/winnings/money.txt");
+            try{
+                money.createNewFile();
+                FileWriter writer = new FileWriter(money);
+                writer.write("0");
+                writer.close();
+            } catch(Exception e) {
+                
+            }
+            File folder = new File("./categories");
+            File[] allFiles = folder.listFiles();
+            String path = "./temp/categories/";
+            for(File file : allFiles) {
+                try {
+                    Files.copy(file.toPath(), (new File(path + file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch(Exception e) {
+                    //
+                }
+            }
         }
-
-
-
-
-        loadCategories();
     }
 
 
     
     public void gameSetup() {
-
-    }
-
-
-    private void loadCategories() {
-
-
-
-
-
-        // load all the txt file categories and convert them to csv, save in temp folder. 
-
-        List<List<String>> categories = new ArrayList<List<String>>();
-
-        File folder = new File("./categories");
-        File[] allFiles = folder.listFiles();
-
-        for (File file: allFiles) {
-
-            try {
-                BufferedReader txtReader = new BufferedReader(new FileReader(file));
-                while (txtReader.readLine() != null) {
-                    List<String> data = Arrays.asList(txtReader.readLine().split(","));
-
-                }
-                txtReader.close();
-            } catch(Exception e) {
-                System.out.println("no file");
-            }
-        }
-
-        
-        
 
     }
 
