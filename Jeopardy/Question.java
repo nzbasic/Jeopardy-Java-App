@@ -1,7 +1,9 @@
 package jeopardy;
 
+import java.io.IOException;
+
 public class Question {
-    
+
     private String _prize;
     private String _question;
     private String _answer;
@@ -27,8 +29,9 @@ public class Question {
         return _answer;
     }
 
-    public void done() {
+    public void done() throws IOException {
         _answered = true;
+        _parent.remove(this);
     }
 
     public Category getParent() {
@@ -37,6 +40,10 @@ public class Question {
 
     public boolean isAnswered() {
         return _answered;
+    }
+
+    public String getFormattedString() {
+        return this._prize + "," + this._question + "," + this._answer + "\n";
     }
 
 }

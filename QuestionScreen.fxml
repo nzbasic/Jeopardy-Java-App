@@ -19,6 +19,6 @@
          </children>
       </AnchorPane>
       <Button layoutX="243.0" layoutY="320.0" mnemonicParsing="false" onAction="#submitAnswer" prefHeight="51.0" prefWidth="115.0" style="-fx-background-radius: 23; -fx-background-color: #0F4C75;" text="Submit" textFill="#ebbdbd" />
-      <TextField layoutX="204.0" layoutY="266.0" onAction="#submitAnswer" prefHeight="25.0" prefWidth="193.0" />
+      <TextField fx:id="textField" layoutX="204.0" layoutY="266.0" onAction="#submitAnswer" prefHeight="25.0" prefWidth="193.0" />
    </children>
 </AnchorPane>

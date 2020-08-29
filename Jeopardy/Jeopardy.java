@@ -11,6 +11,16 @@ import java.util.Scanner;
 
 public class Jeopardy {
     
+    private static Question _activeQuestion;
+
+    public static Question getActiveQuestion() {
+        return _activeQuestion;
+    }
+    public static void setActiveQuestion(Question question) {
+        _activeQuestion = question;
+    }
+
+
     public Jeopardy() {
     }
 
@@ -21,7 +31,7 @@ public class Jeopardy {
         File folder = new File("./temp/categories");
         File[] allFiles = folder.listFiles();
         for(File file : allFiles) {
-            Category category = new Category(file.getName());
+            Category category = new Category(file);
             try {
                 Scanner sc = new Scanner(file);
                 while(sc.hasNextLine()) {

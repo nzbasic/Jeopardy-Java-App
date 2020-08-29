@@ -28,6 +28,12 @@ public class Controller {
 
     private GridPane grid = new GridPane();
 
+    @FXML
+    public Label questionText;
+
+    @FXML
+    public TextField textField;
+
     private void addPaneText(String text, int i, int j) {
         Label label = new Label(text.toUpperCase());
         label.setTextAlignment(TextAlignment.CENTER);
@@ -60,17 +66,18 @@ public class Controller {
         button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         button.setOnAction(e -> {
-    
+            Jeopardy.setActiveQuestion(question);
             FXMLLoader loader = new FXMLLoader();
             String fxmlDocPath = "./QuestionScreen.fxml";
             try {
                 FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
                 AnchorPane root = (AnchorPane) loader.load(fxmlStream);
                 Scene scene = new Scene(root);
+                Controller controller = loader.getController();
+                controller.setQuestionText(question.getQuestion());
                 Stage stage = (Stage) button.getScene().getWindow();
                 stage.setScene(scene);
             } catch(Exception exception) {
-                System.out.println("UR A FUCKING IDIOT");
                 exception.printStackTrace();
             }
             
@@ -171,6 +178,15 @@ public class Controller {
 
     @FXML 
     public void submitAnswer(ActionEvent event) throws IOException {
-        CharSequence chars = ((TextField)event.getSource()).getCharacters();
+        Scene scene = ((Node)event.getSource()).getScene();
+        TextField txt = (TextField)scene.lookup("#textField");
+        CharSequence chars = txt.getCharacters();
+        if (chars.toString().toLowerCase().trim().equals(Jeopardy.getActiveQuestion().getAnswer().toLowerCase().trim())) {
+            Jeopardy.getActiveQuestion().done();
+        }
+    }
+
+    public void setQuestionText(String text) {
+        questionText.setText(text);
     }
 }
