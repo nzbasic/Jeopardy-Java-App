@@ -9,8 +9,6 @@ import javafx.scene.Node;
 import java.io.FileInputStream;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -26,7 +24,6 @@ import javafx.scene.control.Button;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import java.io.IOException;
-import javafx.scene.layout.Priority;
 
 public class Controller {
 
@@ -93,7 +90,7 @@ public class Controller {
                 addButtonText(question.getPrize(), i, j, new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        System.out.println(question.getPrize());
+                        pickQuestion(question);
                     }
                 });
                 j++;
@@ -160,6 +157,22 @@ public class Controller {
     public void reset(ActionEvent event) throws IOException {
         Files.walk(Paths.get("./temp/")).map(Path::toFile).sorted((o1, o2) -> -o1.compareTo(o2)).forEach(File::delete);
         Jeopardy game = new Jeopardy();
+    }
+
+    @FXML
+    private void pickQuestion(Question question) {
+        FXMLLoader loader = new FXMLLoader();
+    
+        String fxmlDocPath = "./QuestionScreen.fxml";
+        FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
+
+        AnchorPane root = (AnchorPane) loader.load(fxmlStream);
+
+        Scene scene2 = new Scene(root);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
     }
 
 

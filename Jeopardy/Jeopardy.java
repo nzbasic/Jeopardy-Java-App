@@ -56,7 +56,7 @@ public class Jeopardy {
                 Scanner sc = new Scanner(file);
                 while(sc.hasNextLine()) {
                     String[] data = sc.nextLine().split(",");
-                    Question question = new Question(data[0], data[1], data[2]);
+                    Question question = new Question(data[0], data[1], data[2], category);
                     category.add(question);
                 }
             } catch(Exception e) {
