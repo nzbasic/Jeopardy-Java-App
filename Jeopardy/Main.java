@@ -32,5 +32,6 @@ public class Main extends Application
         stage.show();
 
         Jeopardy game = new Jeopardy();
+        game.gameSetup();
     }
 }

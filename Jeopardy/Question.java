@@ -31,6 +31,12 @@ public class Question {
         _answered = true;
     }
 
-    public void 
+    public Category getParent() {
+        return _parent;
+    }
+
+    public boolean isAnswered() {
+        return _answered;
+    }
 
 }

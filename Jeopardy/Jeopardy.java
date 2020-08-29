@@ -6,14 +6,41 @@ import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Jeopardy {
     
     public Jeopardy() {
+    }
 
+    public static List<Category> questions() {
+
+        List<Category> output = new ArrayList<Category>();
+
+        File folder = new File("./temp/categories");
+        File[] allFiles = folder.listFiles();
+        for(File file : allFiles) {
+            Category category = new Category(file.getName());
+            try {
+                Scanner sc = new Scanner(file);
+                while(sc.hasNextLine()) {
+                    String[] data = sc.nextLine().split(",");
+                    Question question = new Question(data[0], data[1], data[2], category);
+                    category.add(question);
+                }
+                sc.close();
+            } catch(Exception e) {
+
+            }
+            output.add(category);
+        }
+
+        return output;
+    }
+
+    
+    public void gameSetup() {
         File tempFolder = new File("./temp");
         if (!(tempFolder.exists() && tempFolder.isDirectory())) {
             File temp = new File("./temp");
@@ -42,35 +69,6 @@ public class Jeopardy {
                 }
             }
         }
-    }
-
-    public static List<Category> questions() {
-
-        List<Category> output = new ArrayList<Category>();
-
-        File folder = new File("./temp/categories");
-        File[] allFiles = folder.listFiles();
-        for(File file : allFiles) {
-            Category category = new Category(file.getName());
-            try {
-                Scanner sc = new Scanner(file);
-                while(sc.hasNextLine()) {
-                    String[] data = sc.nextLine().split(",");
-                    Question question = new Question(data[0], data[1], data[2], category);
-                    category.add(question);
-                }
-            } catch(Exception e) {
-
-            }
-            output.add(category);
-        }
-
-        return output;
-    }
-
-    
-    public void gameSetup() {
-
     }
 
 }

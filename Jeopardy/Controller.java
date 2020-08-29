@@ -90,7 +90,10 @@ public class Controller {
                 addButtonText(question.getPrize(), i, j, new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        pickQuestion(question);
+                        try{ 
+                            pickQuestion(question, event);
+                        } catch(Exception e) {
+                        }
                     }
                 });
                 j++;
@@ -157,10 +160,11 @@ public class Controller {
     public void reset(ActionEvent event) throws IOException {
         Files.walk(Paths.get("./temp/")).map(Path::toFile).sorted((o1, o2) -> -o1.compareTo(o2)).forEach(File::delete);
         Jeopardy game = new Jeopardy();
+        game.gameSetup();
     }
 
     @FXML
-    private void pickQuestion(Question question) {
+    private void pickQuestion(Question question, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
     
         String fxmlDocPath = "./QuestionScreen.fxml";

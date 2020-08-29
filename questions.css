@@ -3,8 +3,13 @@
     -fx-background-radius: 0;
     -fx-border-color: black;
     -fx-border-width: 3 3 3 3;
+
+    background-color: #0F4C75;
+    border-color: black;
+    border-width: 3 3 3 3;
 }
 
 .button:hover {
     -fx-background-color: teal;
+    background-color: teal;
 }
