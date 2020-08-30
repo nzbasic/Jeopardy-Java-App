@@ -24,8 +24,9 @@ public class MenuController {
     }
 
     @FXML 
-    public void questions(ActionEvent event) {
-        //change scene to questions 
+    public void questions(ActionEvent event) throws IOException {
+        QuestionController controller = new QuestionController();
+        controller.initialize();
     }
 
     @FXML

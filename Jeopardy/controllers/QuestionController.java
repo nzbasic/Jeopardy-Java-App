@@ -2,7 +2,6 @@ package jeopardy.controllers;
 
 import java.util.List;
 
-import javafx.scene.Node;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,7 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 import jeopardy.Jeopardy;
 import jeopardy.Question;
 import jeopardy.Category;
@@ -86,10 +84,7 @@ public class QuestionController {
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add("./questions.css");
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(scene);
-        window.show();
+        SceneController.setScene(scene);
     }
     
     private void addPaneText(String text, int i, int j) {

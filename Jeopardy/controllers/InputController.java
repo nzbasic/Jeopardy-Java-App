@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import jeopardy.Jeopardy;
-import jeopardy.Question;
 import javafx.scene.Node;
 
 public class InputController {

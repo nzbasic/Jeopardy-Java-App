@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class SceneController {
 
     public static Stage stage;
+    
 
     public static void setScene(Scene scene) {
         stage.setScene(scene);
@@ -34,7 +35,7 @@ public class SceneController {
         FXMLLoader loader = new FXMLLoader();
         FileInputStream fxmlStream = new FileInputStream(path);
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-        Controller controller = loader.getController();
+        InputController controller = loader.getController();
         controller.questionText.setText(question);
         Scene scene = new Scene(root);
         stage.setScene(scene);
