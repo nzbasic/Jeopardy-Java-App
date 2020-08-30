@@ -65,24 +65,12 @@ public class Controller {
 
         button.setOnAction(e -> {
             Jeopardy.setActiveQuestion(question);
-            
+
             try {
-                // FXMLLoader loader = new FXMLLoader();
-                // String fxmlDocPath = "./QuestionScreen.fxml";
-                // FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
-                // AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-                // Scene scene = new Scene(root);
-                // Controller controller = loader.getController();
-                // controller.questionText.setText(question.getQuestion());
-                // Stage stage = (Stage) button.getScene().getWindow();
-                // stage.setScene(scene);
-
-                SceneController.generateScene("./QuestionScreen.fxml");
-
+                SceneController.generateSceneWithText("./QuestionScreen.fxml", question.getQuestion());
             } catch(Exception exception) {
                 exception.printStackTrace();
             }
-            
         });
 
         GridPane.setConstraints(button, i, j);
@@ -161,7 +149,6 @@ public class Controller {
 
     @FXML
     public void menu(ActionEvent event) throws IOException {
-
         SceneController.generateScene("./Menu.fxml");
     }
 
@@ -177,10 +164,12 @@ public class Controller {
         Scene scene = ((Node)event.getSource()).getScene();
         TextField txt = (TextField)scene.lookup("#textField");
         CharSequence chars = txt.getCharacters();
+
         if (chars.toString().toLowerCase().trim().equals(Jeopardy.getActiveQuestion().getAnswer().toLowerCase().trim())) {
             Jeopardy.getActiveQuestion().done();
-            questionText.setText("Correct!");
-
+            SceneController.generateScene("./AnswerScreen.fxml");
+        } else {
+            SceneController.generateScene("./AnswerScreen.fxml");
         }
     }
 }
