@@ -34,7 +34,6 @@ public class Category {
 
     public void remove(Question question) throws IOException {
 
-        _questionList.remove(question);
         String path = _file.getPath();
         _file.delete();
 

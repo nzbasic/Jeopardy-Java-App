@@ -30,8 +30,12 @@ public class Question {
     }
 
     public void done() throws IOException {
-        _answered = true;
+        setAnswered();
         _parent.remove(this);
+    }
+
+    public void setAnswered() {
+        _answered = true;
     }
 
     public Category getParent() {
@@ -43,7 +47,12 @@ public class Question {
     }
 
     public String getFormattedString() {
-        return this._prize + "," + this._question + "," + this._answer + "\n";
+        if (_answered) {
+            return "!," + this._prize + "," + this._question + "," + this._answer + "\n";
+        } else {
+            return this._prize + "," + this._question + "," + this._answer + "\n";
+        }
+        
     }
 
 }
