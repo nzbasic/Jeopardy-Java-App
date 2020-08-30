@@ -2,11 +2,9 @@ package jeopardy;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import java.io.FileInputStream;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -67,16 +65,20 @@ public class Controller {
 
         button.setOnAction(e -> {
             Jeopardy.setActiveQuestion(question);
-            FXMLLoader loader = new FXMLLoader();
-            String fxmlDocPath = "./QuestionScreen.fxml";
+            
             try {
-                FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
-                AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-                Scene scene = new Scene(root);
-                Controller controller = loader.getController();
-                controller.setQuestionText(question.getQuestion());
-                Stage stage = (Stage) button.getScene().getWindow();
-                stage.setScene(scene);
+                // FXMLLoader loader = new FXMLLoader();
+                // String fxmlDocPath = "./QuestionScreen.fxml";
+                // FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
+                // AnchorPane root = (AnchorPane) loader.load(fxmlStream);
+                // Scene scene = new Scene(root);
+                // Controller controller = loader.getController();
+                // controller.questionText.setText(question.getQuestion());
+                // Stage stage = (Stage) button.getScene().getWindow();
+                // stage.setScene(scene);
+
+                SceneController.generateScene("./QuestionScreen.fxml");
+
             } catch(Exception exception) {
                 exception.printStackTrace();
             }
@@ -108,7 +110,12 @@ public class Controller {
             int j=1;
             for (Question question: questions) {
             
-                addButtonText(question, i, j);
+                if (question.isAnswered()) {
+                    addPaneText("-" + question.getPrize() + "-", i, j);
+                } else {
+                    addButtonText(question, i, j);
+                }
+                
                 j++;
                 if (j == 6) {
                     break;
@@ -155,18 +162,7 @@ public class Controller {
     @FXML
     public void menu(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader();
-    
-        String fxmlDocPath = "./Menu.fxml";
-        FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
-
-        AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-
-        Scene scene = new Scene(root);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        SceneController.generateScene("./Menu.fxml");
     }
 
     @FXML 
@@ -183,10 +179,8 @@ public class Controller {
         CharSequence chars = txt.getCharacters();
         if (chars.toString().toLowerCase().trim().equals(Jeopardy.getActiveQuestion().getAnswer().toLowerCase().trim())) {
             Jeopardy.getActiveQuestion().done();
-        }
-    }
+            questionText.setText("Correct!");
 
-    public void setQuestionText(String text) {
-        questionText.setText(text);
+        }
     }
 }

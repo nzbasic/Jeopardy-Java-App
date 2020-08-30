@@ -27,9 +27,10 @@ public class Main extends Application
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);
         Scene scene = new Scene(root);
 
-        stage.setScene(scene);
+        SceneController.stage = stage;
         stage.setTitle("Jeopardy!");
-        stage.show();
+
+        SceneController.setScene(scene);
 
         Jeopardy game = new Jeopardy();
         game.gameSetup();
