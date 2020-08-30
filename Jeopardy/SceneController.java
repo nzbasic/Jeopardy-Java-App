@@ -17,7 +17,7 @@ public class SceneController {
         stage.show();
     }
 
-    public static void generateScene(String path) throws IOException {
+    public static Scene generateScene(String path) throws IOException {
         
         FXMLLoader loader = new FXMLLoader();
         FileInputStream fxmlStream = new FileInputStream(path);
@@ -25,6 +25,7 @@ public class SceneController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        return scene;
 
     }
 

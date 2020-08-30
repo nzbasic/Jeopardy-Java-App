@@ -185,6 +185,12 @@ public class Controller {
         game.gameSetup();
     }
 
+    @FXML
+    public Label answerShower;
+
+    @FXML
+    public Label correctIncorrect;
+
     @FXML 
     public void submitAnswer(ActionEvent event) throws IOException {
         Scene scene = ((Node)event.getSource()).getScene();
@@ -196,6 +202,17 @@ public class Controller {
         } else {
             Jeopardy.getActiveQuestion().done(false);
         }
-        SceneController.generateScene("./AnswerScreen.fxml");
+        scene = SceneController.generateScene("./AnswerScreen.fxml");
+        Label displayCorrectIncorrect = (Label)scene.lookup("#correctIncorrect");
+        Label displayAnswerShower = (Label)scene.lookup("#answerShower");
+
+        if (Jeopardy.getActiveQuestion().wasCorrect()) {
+            displayCorrectIncorrect.setText("Correct!");
+        } else {
+            displayCorrectIncorrect.setText("Incorrect");
+        }
+
+        displayAnswerShower.setText("The correct answer was: " + Jeopardy.getActiveQuestion().getAnswer());
+
     }
 }

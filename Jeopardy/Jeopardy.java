@@ -2,7 +2,6 @@ package jeopardy;
 
 import java.io.File;
 
-import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
@@ -75,10 +74,20 @@ public class Jeopardy {
                 try {
                     Files.copy(file.toPath(), (new File(path + file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING);
                 } catch(Exception e) {
-                    //
+                    e.printStackTrace();
                 }
             }
         }
+    }
+
+    public int calculateWinnings() {
+
+        List<Category> categories = questions();
+        int total = 0;
+        for (Category category: categories) {
+            total = total + category.getCategoryWinnings();
+        }
+        return total;
     }
 
 }

@@ -47,5 +47,19 @@ public class Category {
         writer.close();
     }
 
+    public int getCategoryWinnings() {
+        int total = 0;
+        for (Question question : _questionList) {
+            if (question.isAnswered()) {
+                if (question.wasCorrect()) {
+                    total = total + Integer.parseInt(question.getPrize());
+                } else {
+                    total = total - Integer.parseInt(question.getPrize());
+                }
+            }
+        }
+        return total;
+    }
+
 
 }
