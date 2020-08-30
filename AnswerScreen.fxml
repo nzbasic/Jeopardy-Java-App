@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.AnswerController">
    <children>
       <Button layoutX="151.0" layoutY="274.0" mnemonicParsing="false" onAction="#menu" prefHeight="62.0" prefWidth="149.0" style="-fx-background-radius: 0; -fx-background-color: #0F4C75;" text="Main Menu" textFill="#ddcdcd" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="100.0">
          <font>

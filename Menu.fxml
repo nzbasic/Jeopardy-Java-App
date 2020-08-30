@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -10,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="633.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="633.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.MenuController">
    <children>
       <Button defaultButton="true" layoutX="140.0" layoutY="321.0" mnemonicParsing="false" onAction="#questions" prefHeight="132.0" prefWidth="363.0" style="-fx-background-color: #1F1A24; -fx-border-color: #dacbcb;" text="Go To Questions" textFill="#dacbcb" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="130.0">
          <font>
@@ -37,11 +37,6 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Text fill="#dacbcb" layoutX="309.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Text>
       <Button defaultButton="true" layoutX="141.0" layoutY="476.0" mnemonicParsing="false" onAction="#reset" prefHeight="132.0" prefWidth="363.0" style="-fx-background-color: #1F1A24; -fx-border-color: #dacbcb;" text="Reset" textFill="#dacbcb">
          <font>
             <Font size="36.0" />
@@ -53,5 +48,14 @@
             <Glow />
          </effect>
       </Button>
+      <AnchorPane layoutX="211.0" layoutY="248.0" prefHeight="52.0" prefWidth="208.0">
+         <children>
+            <Label fx:id="winnings" alignment="CENTER" text="Label" textFill="#dad0d0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
