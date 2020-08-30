@@ -1,4 +1,4 @@
-package jeopardy;
+package jeopardy.controllers;
 
 import java.io.FileInputStream;
 import java.io.IOException;

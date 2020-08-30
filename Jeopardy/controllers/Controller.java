@@ -1,9 +1,12 @@
-package jeopardy;
+package jeopardy.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jeopardy.Category;
+import jeopardy.Jeopardy;
+import jeopardy.Question;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;

@@ -2,7 +2,7 @@ package jeopardy;
 
 import java.io.FileInputStream;
 import java.io.IOException;
- 
+import jeopardy.controllers.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
