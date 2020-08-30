@@ -8,6 +8,7 @@ public class Question {
     private String _question;
     private String _answer;
     private boolean _answered = false;
+    private boolean _correct;
     private Category _parent;
 
     public Question(String prize, String question, String answer, Category category) {
@@ -29,9 +30,18 @@ public class Question {
         return _answer;
     }
 
-    public void done() throws IOException {
+    public void done(boolean correct) throws IOException {
         setAnswered();
         _parent.remove(this);
+        setCorrect(correct);
+    }
+
+    public void setCorrect(boolean correct) {
+        _correct = correct;
+    }
+
+    public boolean wasCorrect() {
+        return _correct;
     }
 
     public void setAnswered() {
@@ -47,8 +57,10 @@ public class Question {
     }
 
     public String getFormattedString() {
-        if (_answered) {
+        if (_answered && _correct) {
             return "!," + this._prize + "," + this._question + "," + this._answer + "\n";
+        } else if(_answered && !_correct) {
+            return "?," + this._prize + "," + this._question + "," + this._answer + "\n";
         } else {
             return this._prize + "," + this._question + "," + this._answer + "\n";
         }

@@ -54,6 +54,32 @@ public class Controller {
         grid.getChildren().addAll(canvas);
     }
 
+    private void addAnsweredPanel(Question question, int i, int j) {
+        Label label = new Label(question.getPrize());
+        label.setTextAlignment(TextAlignment.CENTER);
+        label.setFont(new Font(25));
+        label.setTextFill(Color.YELLOW);
+        label.setAlignment(Pos.CENTER);
+
+        AnchorPane canvas = new AnchorPane();
+        canvas.setPrefSize(200,100);
+        if (question.wasCorrect()) {
+            canvas.setStyle("-fx-background-color: #28b463 ; -fx-border-color: black; -fx-border-width: 3 3 3 3;");
+        } else {
+            canvas.setStyle("-fx-background-color: #c0392b ; -fx-border-color: black; -fx-border-width: 3 3 3 3;");
+        }
+
+        canvas.getChildren().addAll(label);
+
+        AnchorPane.setTopAnchor(label, 5.0);
+        AnchorPane.setBottomAnchor(label, 5.0);
+        AnchorPane.setLeftAnchor(label, 5.0);
+        AnchorPane.setRightAnchor(label, 5.0);
+
+        GridPane.setConstraints(canvas, i, j);
+        grid.getChildren().addAll(canvas);
+    }
+
     private void addButtonText(Question question, int i, int j) {
         Button button = new Button(question.getPrize());
         button.setTextAlignment(TextAlignment.CENTER);
@@ -99,7 +125,7 @@ public class Controller {
             for (Question question: questions) {
             
                 if (question.isAnswered()) {
-                    addPaneText("-" + question.getPrize() + "-", i, j);
+                    addAnsweredPanel(question, i, j);
                 } else {
                     addButtonText(question, i, j);
                 }
@@ -166,10 +192,10 @@ public class Controller {
         CharSequence chars = txt.getCharacters();
 
         if (chars.toString().toLowerCase().trim().equals(Jeopardy.getActiveQuestion().getAnswer().toLowerCase().trim())) {
-            Jeopardy.getActiveQuestion().done();
-            SceneController.generateScene("./AnswerScreen.fxml");
+            Jeopardy.getActiveQuestion().done(true);
         } else {
-            SceneController.generateScene("./AnswerScreen.fxml");
+            Jeopardy.getActiveQuestion().done(false);
         }
+        SceneController.generateScene("./AnswerScreen.fxml");
     }
 }
