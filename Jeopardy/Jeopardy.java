@@ -40,6 +40,11 @@ public class Jeopardy {
                     if (data[0].equals("!")) {
                         question = new Question(data[1], data[2], data[3], category);
                         question.setAnswered();
+                        question.setCorrect(true);
+                    } else if (data[0].equals("?")) {
+                        question = new Question(data[1], data[2], data[3], category);
+                        question.setAnswered();
+                        question.setCorrect(false);
                     } else {
                         question = new Question(data[0], data[1], data[2], category);
                     }
@@ -61,19 +66,8 @@ public class Jeopardy {
         if (!(tempFolder.exists() && tempFolder.isDirectory())) {
             File temp = new File("./temp");
             temp.mkdir();
-            File winnings = new File("./temp/winnings");
             File categories = new File("./temp/categories");
-            winnings.mkdir();
             categories.mkdir();
-            File money = new File("./temp/winnings/money.txt");
-            try{
-                money.createNewFile();
-                FileWriter writer = new FileWriter(money);
-                writer.write("0");
-                writer.close();
-            } catch(Exception e) {
-                
-            }
             File folder = new File("./categories");
             File[] allFiles = folder.listFiles();
             String path = "./temp/categories/";
