@@ -16,13 +16,13 @@ public class AnswerController {
 
     @FXML
     public void menu(ActionEvent event) throws IOException {
-        SceneController.generateScene("./Menu.fxml");
+        SceneController.generateScene("./fxml/Menu.fxml");
     }
     
     @FXML 
     public void questions(ActionEvent event) throws IOException {
-        SceneController.generateScene("./Questions.fxml");
-        //change scene to questions 
+        QuestionController controller = new QuestionController();
+        controller.initialize();
     }
     
 }

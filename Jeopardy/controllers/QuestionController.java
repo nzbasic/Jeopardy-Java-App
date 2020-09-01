@@ -149,7 +149,7 @@ public class QuestionController {
             Jeopardy.setActiveQuestion(question);
 
             try {
-                SceneController.generateSceneWithText("./QuestionScreen.fxml", question.getQuestion());
+                SceneController.generateSceneWithText("./fxml/QuestionScreen.fxml", question.getQuestion());
             } catch(Exception exception) {
                 exception.printStackTrace();
             }

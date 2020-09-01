@@ -22,7 +22,7 @@ public class Main extends Application
  
         FXMLLoader loader = new FXMLLoader();
     
-        String fxmlDocPath = "./Menu.fxml";
+        String fxmlDocPath = "./fxml/Menu.fxml";
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);
