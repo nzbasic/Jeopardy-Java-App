@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+
 import jeopardy.Jeopardy;
 import jeopardy.Question;
 import jeopardy.Category;

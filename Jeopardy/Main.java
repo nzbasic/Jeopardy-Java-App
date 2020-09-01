@@ -2,12 +2,13 @@ package jeopardy;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import jeopardy.controllers.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import jeopardy.controllers.SceneController;
  
 public class Main extends Application
 {
