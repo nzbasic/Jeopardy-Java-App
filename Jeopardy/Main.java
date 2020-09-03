@@ -8,8 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import jeopardy.Jeopardy;
 import jeopardy.controllers.SceneController;
- 
+
+
 public class Main extends Application
 {
     public static void main(String[] args) 
@@ -21,8 +23,7 @@ public class Main extends Application
     public void start(Stage stage) throws IOException {
  
         FXMLLoader loader = new FXMLLoader();
-    
-        String fxmlDocPath = "./fxml/Menu.fxml";
+        String fxmlDocPath = "jeopardy/controllers/fxml/Menu.fxml";
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);

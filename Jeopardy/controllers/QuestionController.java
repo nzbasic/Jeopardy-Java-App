@@ -83,7 +83,7 @@ public class QuestionController {
         root.setStyle("-fx-background-color: #121212");
 
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add("./questions.css");
+        scene.getStylesheets().add("jeopardy/controllers/fxml/questions.css");
 
         SceneController.setScene(scene);
     }
@@ -149,7 +149,7 @@ public class QuestionController {
             Jeopardy.setActiveQuestion(question);
 
             try {
-                SceneController.generateSceneWithText("./fxml/QuestionScreen.fxml", question.getQuestion());
+                SceneController.generateSceneWithText("jeopardy/controllers/fxml/QuestionScreen.fxml", question.getQuestion());
             } catch(Exception exception) {
                 exception.printStackTrace();
             }

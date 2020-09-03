@@ -1,7 +1,8 @@
 # SOFTENG 206 Assignment 2
 
-You will find the instructions to complete this assignment in Canvas. 
+To compile and run, you must use these java VM args: "vmArgs": "--module-path path-to-javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml"
+Must have javafx-sdk-11.0.2. 
 
-Be sure to update this README file to provide an easy-to-follow set of instructions on how to run your program. 
+
 
 
