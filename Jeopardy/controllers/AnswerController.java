@@ -16,7 +16,7 @@ public class AnswerController {
 
     @FXML
     public void menu(ActionEvent event) throws IOException {
-        SceneController.generateScene("jeopardy/controllers/fxml/Menu.fxml");
+        SceneController.generateScene("/jeopardy/controllers/fxml/Menu.fxml");
     }
     
     @FXML 

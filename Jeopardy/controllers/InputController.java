@@ -35,7 +35,7 @@ public class InputController {
         } else {
             Jeopardy.getActiveQuestion().done(false);
         }
-        scene = SceneController.generateScene("jeopardy/controllers/fxml/AnswerScreen.fxml");
+        scene = SceneController.generateScene("/jeopardy/controllers/fxml/AnswerScreen.fxml");
         Label displayCorrectIncorrect = (Label)scene.lookup("#correctIncorrect");
         Label displayAnswerShower = (Label)scene.lookup("#answerShower");
 

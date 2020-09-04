@@ -23,7 +23,7 @@ public class Main extends Application
     public void start(Stage stage) throws IOException {
  
         FXMLLoader loader = new FXMLLoader();
-        String fxmlDocPath = "jeopardy/controllers/fxml/Menu.fxml";
+        String fxmlDocPath = "/jeopardy/controllers/fxml/Menu.fxml";
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
         AnchorPane root = (AnchorPane) loader.load(fxmlStream);
