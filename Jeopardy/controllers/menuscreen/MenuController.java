@@ -1,4 +1,4 @@
-package jeopardy.controllers;
+package jeopardy.controllers.menuscreen;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 import jeopardy.Jeopardy;
+import jeopardy.controllers.questionsscreen.QuestionController;
 
 public class MenuController {
 
@@ -46,9 +47,9 @@ public class MenuController {
                 Scanner sc = new Scanner(file);
                 while(sc.hasNextLine()) {
                     String[] data = sc.nextLine().split(",");
-                    if (data[0].equals("!")) {
+                    if (data[0].equals("true")) {
                         money = money + Integer.parseInt(data[1]);
-                    } else if (data[0].equals("?")) {
+                    } else if (data[0].equals("false")) {
                         money = money - Integer.parseInt(data[1]);
                     }
                 }

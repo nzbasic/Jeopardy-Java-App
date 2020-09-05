@@ -1,4 +1,4 @@
-package jeopardy.controllers;
+package jeopardy.controllers.inputscreen;
 
 import java.io.IOException;
 
@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import jeopardy.Jeopardy;
+import jeopardy.controllers.SceneController;
+import jeopardy.controllers.answerscreen.AnswerController;
 import javafx.scene.Node;
 
 public class InputController {
@@ -31,11 +33,14 @@ public class InputController {
         CharSequence chars = txt.getCharacters();
 
         if (chars.toString().toLowerCase().trim().equals(Jeopardy.getActiveQuestion().getAnswer().toLowerCase().trim())) {
+            System.out.println("correct");
             Jeopardy.getActiveQuestion().done(true);
         } else {
+            System.out.println("incorrect");
             Jeopardy.getActiveQuestion().done(false);
         }
-        scene = SceneController.generateScene("/jeopardy/controllers/fxml/AnswerScreen.fxml");
+
+        scene = SceneController.generateScene(AnswerController.class.getResource("AnswerScreen.fxml"));
         Label displayCorrectIncorrect = (Label)scene.lookup("#correctIncorrect");
         Label displayAnswerShower = (Label)scene.lookup("#answerShower");
 

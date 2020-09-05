@@ -1,10 +1,13 @@
-package jeopardy.controllers;
+package jeopardy.controllers.answerscreen;
 
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import jeopardy.controllers.SceneController;
+import jeopardy.controllers.menuscreen.MenuController;
+import jeopardy.controllers.questionsscreen.QuestionController;
 
 public class AnswerController {
 
@@ -16,7 +19,7 @@ public class AnswerController {
 
     @FXML
     public void menu(ActionEvent event) throws IOException {
-        SceneController.generateScene("/jeopardy/controllers/fxml/Menu.fxml");
+        SceneController.generateScene(MenuController.class.getResource("Menu.fxml"));
     }
     
     @FXML 

@@ -1,4 +1,4 @@
-package jeopardy.controllers;
+package jeopardy.controllers.questionsscreen;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import javafx.scene.text.TextAlignment;
 
 import jeopardy.Jeopardy;
 import jeopardy.Question;
+import jeopardy.controllers.SceneController;
 import jeopardy.Category;
 
 public class QuestionController {
@@ -83,7 +84,7 @@ public class QuestionController {
         root.setStyle("-fx-background-color: #121212");
 
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add("/jeopardy/controllers/fxml/questions.css");
+        scene.getStylesheets().add("questions.css");
 
         SceneController.setScene(scene);
     }
@@ -149,7 +150,7 @@ public class QuestionController {
             Jeopardy.setActiveQuestion(question);
 
             try {
-                SceneController.generateSceneWithText("/jeopardy/controllers/fxml/QuestionScreen.fxml", question.getQuestion());
+                SceneController.generateSceneWithText(QuestionController.class.getResourceAsStream("QuestionScreen.fxml"), question.getQuestion());
             } catch(Exception exception) {
                 exception.printStackTrace();
             }

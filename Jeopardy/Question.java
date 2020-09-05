@@ -32,8 +32,8 @@ public class Question {
 
     public void done(boolean correct) throws IOException {
         setAnswered();
-        _parent.remove(this);
         setCorrect(correct);
+        _parent.remove(this);
     }
 
     public void setCorrect(boolean correct) {
@@ -58,9 +58,9 @@ public class Question {
 
     public String getFormattedString() {
         if (_answered && _correct) {
-            return "!," + this._prize + "," + this._question + "," + this._answer + "\n";
+            return "true," + this._prize + "," + this._question + "," + this._answer + "\n";
         } else if(_answered && !_correct) {
-            return "?," + this._prize + "," + this._question + "," + this._answer + "\n";
+            return "false," + this._prize + "," + this._question + "," + this._answer + "\n";
         } else {
             return this._prize + "," + this._question + "," + this._answer + "\n";
         }

@@ -1,12 +1,17 @@
 package jeopardy.controllers;
 
-import java.io.FileInputStream;
+import java.net.URL;
+
 import java.io.IOException;
+import java.io.InputStream;
+
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import jeopardy.controllers.inputscreen.InputController;
 
 public class SceneController {
 
@@ -18,11 +23,9 @@ public class SceneController {
         stage.show();
     }
 
-    public static Scene generateScene(String path) throws IOException {
+    public static Scene generateScene(URL url) throws IOException {
         
-        FXMLLoader loader = new FXMLLoader();
-        FileInputStream fxmlStream = new FileInputStream(path);
-        AnchorPane root = (AnchorPane) loader.load(fxmlStream);
+        Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -30,11 +33,10 @@ public class SceneController {
 
     }
 
-    public static void generateSceneWithText(String path, String question) throws IOException {
+    public static void generateSceneWithText(InputStream stream, String question) throws IOException {
         
         FXMLLoader loader = new FXMLLoader();
-        FileInputStream fxmlStream = new FileInputStream(path);
-        AnchorPane root = (AnchorPane) loader.load(fxmlStream);
+        AnchorPane root = (AnchorPane) loader.load(stream);
         InputController controller = loader.getController();
         controller.questionText.setText(question);
         Scene scene = new Scene(root);

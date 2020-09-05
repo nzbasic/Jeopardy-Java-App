@@ -36,11 +36,11 @@ public class Jeopardy {
                 while(sc.hasNextLine()) {
                     String[] data = sc.nextLine().split(",");
                     Question question;
-                    if (data[0].equals("!")) {
+                    if (data[0].equals("true")) {
                         question = new Question(data[1], data[2], data[3], category);
                         question.setAnswered();
                         question.setCorrect(true);
-                    } else if (data[0].equals("?")) {
+                    } else if (data[0].equals("false")) {
                         question = new Question(data[1], data[2], data[3], category);
                         question.setAnswered();
                         question.setCorrect(false);
