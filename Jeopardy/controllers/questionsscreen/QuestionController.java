@@ -158,6 +158,17 @@ public class QuestionController {
 
             try {
                 SceneController.generateSceneWithText(InputController.class.getResourceAsStream("InputScreen.fxml"), question.getQuestion());
+                Thread speakThread = new Thread() {
+                    public void run() {
+                        ProcessBuilder pb = new ProcessBuilder(new String[]{"espeak", question.getQuestion()}); 
+                        try {
+                            pb.start();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                speakThread.start();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
