@@ -19,7 +19,6 @@ public class Jeopardy {
         _activeQuestion = question;
     }
 
-
     public Jeopardy() {
     }
 
@@ -79,15 +78,4 @@ public class Jeopardy {
             }
         }
     }
-
-    public int calculateWinnings() {
-
-        List<Category> categories = questions();
-        int total = 0;
-        for (Category category: categories) {
-            total = total + category.getCategoryWinnings();
-        }
-        return total;
-    }
-
 }
