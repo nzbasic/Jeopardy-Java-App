@@ -33,10 +33,8 @@ public class InputController {
         CharSequence chars = txt.getCharacters();
 
         if (chars.toString().toLowerCase().trim().equals(Jeopardy.getActiveQuestion().getAnswer().toLowerCase().trim())) {
-            System.out.println("correct");
             Jeopardy.getActiveQuestion().done(true);
         } else {
-            System.out.println("incorrect");
             Jeopardy.getActiveQuestion().done(false);
         }
 

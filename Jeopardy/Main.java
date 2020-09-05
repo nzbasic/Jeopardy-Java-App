@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import jeopardy.controllers.SceneController;
 import jeopardy.controllers.menuscreen.MenuController;
 
-
-
 public class Main extends Application
 {
     public static void main(String[] args) 
