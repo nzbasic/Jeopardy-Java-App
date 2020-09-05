@@ -1,5 +1,6 @@
 package jeopardy.controllers.questionsscreen;
 
+import java.io.IOException;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ import javafx.scene.text.TextAlignment;
 import jeopardy.Jeopardy;
 import jeopardy.Question;
 import jeopardy.controllers.SceneController;
+import jeopardy.controllers.inputscreen.InputController;
+import jeopardy.controllers.resetscreen.ResetController;
 import jeopardy.Category;
 
 public class QuestionController {
@@ -29,22 +32,26 @@ public class QuestionController {
 
         List<Category> categories = Jeopardy.questions();
 
+        if (checkEmpty(categories)) {
+            return;
+        }
+
         grid.setHgap(2);
         grid.setVgap(2);
-        grid.setPrefSize(600,400);
+        grid.setPrefSize(600, 400);
         grid.gridLinesVisibleProperty();
-        grid.setPadding(new Insets(5,5,5,5));
+        grid.setPadding(new Insets(5, 5, 5, 5));
 
-        int i=0; 
-        for (Category category: categories) {
-            
+        int i = 0;
+        for (Category category : categories) {
+
             addPaneText(category.getName(), i, 0);
 
             List<Question> questions = category.getQuestions();
 
-            int j=1;
-            for (Question question: questions) {
-            
+            int j = 1;
+            for (Question question : questions) {
+
                 if (question.isAnswered()) {
                     addAnsweredPanel(question, i, j);
                 } else {
@@ -56,7 +63,7 @@ public class QuestionController {
                 }
             }
             if (j < 5) {
-                for (int k=j; k<6; k++) {
+                for (int k = j; k < 6; k++) {
                     addPaneText("", i, k);
                 }
             }
@@ -65,17 +72,17 @@ public class QuestionController {
                 break;
             }
         }
-        if (i < 6) {
-            for (int k=i; k<6; k++) {
-                addPaneText("", k, 0);
-                for (int l=1; l<6; l++) {
-                    addPaneText("", k, l);
-                }
-            }
-        }
+        // if (i < 6) {
+        //     for (int k = i; k < 6; k++) {
+        //         addPaneText("", k, 0);
+        //         for (int l = 1; l < 6; l++) {
+        //             addPaneText("", k, l);
+        //         }
+        //     }
+        // }
 
         AnchorPane root = new AnchorPane(grid);
-        root.setPrefSize(1000,600);
+        root.setPrefSize(i*200, 600);
         AnchorPane.setTopAnchor(grid, 0.0);
         AnchorPane.setBottomAnchor(grid, 0.0);
         AnchorPane.setLeftAnchor(grid, 0.0);
@@ -83,12 +90,12 @@ public class QuestionController {
 
         root.setStyle("-fx-background-color: #121212");
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, i*200, 600);
         scene.getStylesheets().add("questions.css");
 
         SceneController.setScene(scene);
     }
-    
+
     private void addPaneText(String text, int i, int j) {
         Label label = new Label(text.toUpperCase());
         label.setTextAlignment(TextAlignment.CENTER);
@@ -98,7 +105,7 @@ public class QuestionController {
         label.setWrapText(true);
 
         AnchorPane canvas = new AnchorPane();
-        canvas.setPrefSize(200,100);
+        canvas.setPrefSize(200, 100);
         canvas.setStyle("-fx-background-color: #0F4C75; -fx-border-color: black; -fx-border-width: 3 3 3 3;");
         canvas.getChildren().addAll(label);
 
@@ -119,7 +126,7 @@ public class QuestionController {
         label.setAlignment(Pos.CENTER);
 
         AnchorPane canvas = new AnchorPane();
-        canvas.setPrefSize(200,100);
+        canvas.setPrefSize(200, 100);
         if (question.wasCorrect()) {
             canvas.setStyle("-fx-background-color: #28b463 ; -fx-border-color: black; -fx-border-width: 3 3 3 3;");
         } else {
@@ -143,15 +150,15 @@ public class QuestionController {
         button.setFont(new Font(25));
         button.setTextFill(Color.YELLOW);
 
-        button.setPrefSize(200,100);
+        button.setPrefSize(200, 100);
         button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         button.setOnAction(e -> {
             Jeopardy.setActiveQuestion(question);
 
             try {
-                SceneController.generateSceneWithText(QuestionController.class.getResourceAsStream("QuestionScreen.fxml"), question.getQuestion());
-            } catch(Exception exception) {
+                SceneController.generateSceneWithText(InputController.class.getResourceAsStream("InputScreen.fxml"), question.getQuestion());
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
         });
@@ -159,4 +166,22 @@ public class QuestionController {
         GridPane.setConstraints(button, i, j);
         grid.getChildren().addAll(button);
     }
+
+    public boolean checkEmpty(List<Category> categories) {
+
+        for (Category category : categories) {
+            if (!category.isEmpty()) {
+                return false;
+            }
+        }
+
+        try {
+            SceneController.generateScene(ResetController.class.getResource("ResetScreen.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+
 }

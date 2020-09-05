@@ -61,5 +61,14 @@ public class Category {
         return total;
     }
 
+    public boolean isEmpty() {
+        for (Question question: _questionList) {
+            if (!question.isAnswered()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
