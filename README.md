@@ -1,5 +1,13 @@
 # SOFTENG 206 Assignment 2
 
+This is a simple java app to play a game of Jeopardy.
+
+Menu:\
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/768260893414785064/unknown.png "Jeopardy Menu")
+
+Question Selection:\
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/768261129658171412/unknown.png "Question Selection")
+
 To compile and run, you must use these java VM args: "vmArgs": "--module-path path-to-javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml"
 Must have javafx-sdk-11.0.2. 
 
